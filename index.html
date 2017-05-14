@@ -1,1 +1,77 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <title>WannaCry - earnings</title>
+    <meta name="description" content="WannaCry total BTC earning.">
+    <meta name="keywords" content="WannaCry, WannaCrypt, earnings, ransomware">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+    <script language="javascript">
+        window.onload = function(e) {
+            var addresses = ["13AM4VW2dhxYgXeQepoHkHSQuy6NgaEb94", "115p7UMMngoj1pMvkpHijcRdfJNXj6LrLn", "12t9YDPgwueZ9NyMgw519p7AA8isjr6SMw", "1QAc9S5EmycqjzzWDc1yiWzr9jJLC8sLiY", "15zGqZCTcys6eCjDkE3DypCjXi6QWRV6V1"];
+            for (i = 0; i < addresses.length; i++) {
+                var table = document.getElementById("address_table");
+                var row = table.insertRow($('#address_table tr').length);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = i + 1;
+                cell2.innerHTML = "<a href='https://blockchain.info/address/" + addresses[i] + "'>" + addresses[i] + "</a>";
+            }
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                crossDomain: true,
+                url: "http://btc.blockr.io/api/v1/address/balance/" + addresses.join(',') + "&cors=true",
+                success: function(responseData, textStatus, jqXHR) {
+                    var total = 0.0;
+                    for (i = 0; i < responseData.data.length; i++) {
+                        total += responseData.data[i].balance;
+                    }
+                    $("#total").text(total);
+                },
+                error: function(responseData, textStatus, errorThrown) {
+                    // shit happens
+                    $("#total").text("oops");
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body style="background:black;text-align:center;color:white;">
+    <img src="./SomeImage.JPG"></img>
+    <h1 style="color:white">Earned so far: <span id="total"> </span> BTC</h1>
+    <table style="margin:auto;" id="address_table">
+        <tr>
+            <td>#</td>
+            <td>Address</td>
+        </tr>
+    </table>
+    <br>
+    <img src="./Octocat.png" style="height: 70px;">
+    <h3>This site is hosted on <a href="https://github.com/GregorSpagnolo/WannaCrypt">GitHub!</a></h3>
+    <p>If you find any other address please feel free to add.</p>
+    <br>
+    <br>
+    <br>
+    <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn" data-address="3NM4bawkgaPox8RRFs9A6tgbWf99Aw59sr" data-shared="false">
+        <div class="blockchain stage-begin">
+            <img src="https://blockchain.info/Resources/buttons/donate_64.png" />
+        </div>
+
+        <div class="blockchain stage-ready">
+            <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+            <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+            Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+            <font color="red">[[error]]</font>
+        </div>
+    </div>
+</body>
+
+</html>
