@@ -15,8 +15,15 @@
                 var row = table.insertRow($('#address_table tr').length);
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
                 cell1.innerHTML = i + 1;
                 cell2.innerHTML = "<a href='https://blockchain.info/address/" + addresses[i] + "'>" + addresses[i] + "</a>";
+                if(i < 3){
+                    cell3.innerHtml = "1.0";
+                }
+                else{
+                    cell3.innerHtml = "beta";
+                }
             }
             $.ajax({
                 type: 'GET',
@@ -47,6 +54,7 @@
         <tr>
             <td>#</td>
             <td>Address</td>
+            <td>Version</td>
         </tr>
     </table>
     <br>
