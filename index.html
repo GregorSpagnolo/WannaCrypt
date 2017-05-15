@@ -19,10 +19,10 @@
                 cell1.innerHTML = i + 1;
                 cell2.innerHTML = "<a href='https://blockchain.info/address/" + addresses[i] + "'>" + addresses[i] + "</a>";
                 if(i < 3){
-                    cell3.innerHtml = "1.0";
+                    cell3.innerHTML = "1.0";
                 }
                 else{
-                    cell3.innerHtml = "beta";
+                    cell3.innerHTML = "beta";
                 }
             }
             $.ajax({
