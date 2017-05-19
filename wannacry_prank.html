@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WannaCry - earnings</title>
+    <meta name="description" content="WannaCry total BTC earning.">
+    <meta name="keywords" content="WannaCry, WannaCrypt, earnings, ransomware">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+    <script language="javascript">
+        function havetopay() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = "block";
+        }
+
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function setNewTime(distance, spanId) {
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById(spanId).innerHTML = days + ":" + (hours < 10 ? '0' + hours : hours) + ":" +
+                (minutes < 10 ? '0' + minutes : minutes) + ":" + (seconds < 10 ? '0' + seconds : seconds);
+        }
+
+        function writeExpired(date, spanId) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            document.getElementById(spanId).innerHTML = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + (hours < 10 ? '0' + hours : hours) + ":" +
+                (minutes < 10 ? '0' + minutes : minutes) + ":" + (seconds < 10 ? '0' + seconds : seconds)
+        }
+        window.onload = function(e) {
+            // Get the modal
+
+
+            // Get the <span> element that closes the modal
+
+            var date1 = new Date(+(new Date()) + Math.floor(Math.random(1, 100) * 100000000));
+            var date2 = new Date(+(new Date()) + Math.floor(Math.random(1, 100) * 1000000000));
+            writeExpired(date1, "risedon1");
+            writeExpired(date2, "risedon2");
+            //https://www.w3schools.com/howto/howto_js_countdown.asp
+            setInterval(function() {
+                var now = new Date().getTime();
+                setNewTime(date1 - now, "timer1")
+                setNewTime(date2 - now, "timer2")
+
+                // If the count down is finished, write some text 
+                if (date1 - now < 0) {
+                    document.getElementById("timer1").innerHTML = "EXPIRED";
+                }
+                if (date2 - now < 0) {
+                    document.getElementById("timer2").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+    </script>
+    <style>
+        /* The Modal (background) */
+        
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 200px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Content */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+        }
+        /* The Close Button */
+        
+        .close {
+            margin: 10px;
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body style="background:black;color:white; font-family:Arial, Helvetica, sans-serif;">
+
+    <br>
+    <div style="height:650px;width:820px;margin:auto;margin-top: 100px;">
+        <img src="./saver.png" style="position:absolute;" />
+        <div style="height: 100px;width: 200px;position:absolute;margin-top: 226px;margin-left: 23px;text-align:center;">
+            <span id="risedon1" style="font-size:11pt; font-weight:bold;">1/3/1989 15:20</span>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:11pt; font-weight:bold;">Time Left</span>
+            <br/>
+            <span id="timer1" style="text-decoration-style: dotted; font-size: 18pt;">1/3/1989 15:20</span>
+        </div>
+        <div style="height: 100px;width: 200px;position:absolute;margin-top: 385px;margin-left: 23px;text-align:center;">
+            <span id="risedon2" style="font-size:11pt; font-weight:bold;">1/3/1989 15:20</span>
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-size:11pt; font-weight:bold;">Time Left</span>
+            <br/>
+            <span id="timer2" style="text-decoration-style: dotted; font-size: 18pt;">1/3/1989 15:20</span>
+        </div>
+        <div style="height: 404px;width: 549px;position:absolute;margin-top: 88px;margin-left: 249px;text-align:left;overflow-y: scroll;background-color: white;color: black;padding-left: 5px;">
+            <h3 style="margin-bottom: 0;">What Happened to My Computer?</h3>
+            <p style="margin-top: 5px;">
+                <b>Y</b>our important files are encrypted.<br>Many of your documents, photos, videos, databases and other files are no longer accessible because they have been encrypted. Maybe you are busy looking for a way to recover your files, but
+                do not waste your time. Nobody can recover your files without our decryption service.
+            </p>
+            <h3 style="margin-bottom: 0;">Can I Recover My Files?</h3>
+            <p style="margin-top: 5px;">
+                <b>S</b>ure. We guarantee that you can recover all your files safely and easily. But you have limited time. <br> If you want to decrypt all your files, you need to pay.<br> You only have 3 days to submit the payment. After that the price
+                will doubled. <br> Also, if you don't pay in 7 days, you won't be able to recover your files forever.
+
+            </p>
+            <h3 style="margin-bottom: 0;">How do I pay?</h3>
+            <p style="margin-top: 5px;">
+                <b>P</b>ayment is accepted in Bitcoin only. For more information as your friend how to use bitcoin. Make sure that you buy enough Bitcoins. <br> If you pay more we will make sure that you will get the key immediately. <br> After your payment,
+                clikc &lt; Check Payment &gt. Best time to check: 9:00am - 11:00am GMT.
+            </p>
+        </div>
+        <button onclick="havetopay()" type="button" style="position:absolute;margin-top: 590px;font-size: 15pt;width: 264px;margin-left: 246px;height: 35px;">Check Payment!</button>
+        <button onclick="havetopay()" type="button" style="position:absolute;margin-top: 590px;font-size: 15pt;width: 264px;margin-left: 536px;height: 35px;">Decrypt</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+
+                <p style="color:black;">We haven't received your payment yet!</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
